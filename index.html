@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <title>Calculadora</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    </head>
+    <body>
+        
+        <div id= "app" class="container col-md-5 col-sm-12">
+            <div class="card">
+                <h5 class="card-header">Calculadora</h5>
+                <div class="card-body">
+                  <!-- <h5 class="card-title">Special title treatment</h5> -->
+                  <p class="card-text">Ingresa dos valores y selecciona la operacion.</p>
+
+                  <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Primer Valor</span>
+                    <input v-model="valor1" type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                  </div>
+
+                  <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Segundo Valor</span>
+                    <input v-model="valor2"  type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                  </div>
+
+                  <div class="input-group input-group-sm mb-3">
+                    <label class="input-group-text" for="inputGroupSelect01">Operacion</label>
+                    <select v-model="operacion" class="form-select" id="inputGroupSelect01">
+                      <option selected value="1">+</option>
+                      <option value="2">-</option>
+                      <option value="3">*</option>
+                      <option value="4">/</option>
+                    </select>
+                  </div>
+
+                  <div class="input-group input-group-sm mb-3">
+                    <span class="input-group-text" id="inputGroup-s izing-sm">Resultado</span>
+                    <input v-model="resultado"  type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                  </div>
+                  <div class="row justify-content-between">
+                     <div class="col-4">
+                        <button v-on:click="calcular" class="btn btn-primary">Calcular</button>
+                     </div> 
+                    <div class="col-4"> 
+                        <button v-on:click="limpiar" class="btn btn-warning">Limpiar</button>
+                    </div>
+                    
+                  </div>
+                  
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'You loaded this page on ' + new Date().toLocaleString(),
+                valor1 : Number = 0,
+                valor2 : Number = 0,
+                operacion : Number = 1,
+                resultado : Number = 0
+            },
+            methods: {
+                reverseMessage: function () {
+                    this.message = this.message.split('').reverse().join('')
+                },
+                calcular :function(){
+
+                    if(this.operacion == 1) {this.resultado = parseFloat(this.valor1) + parseFloat(this.valor2)}
+                    if(this.operacion == 2) {this.resultado = parseFloat(this.valor1) - parseFloat(this.valor2)}
+                    if(this.operacion == 3) {this.resultado = parseFloat(this.valor1) * parseFloat(this.valor2)}
+                    if(this.operacion == 4) {this.resultado = parseFloat(this.valor1) / parseFloat(this.valor2)}
+
+                },
+                limpiar: function(){
+                    this.valor1 = 0,
+                    this.valor2 = 0,
+                    this.operacion = 1,
+                    this.resultado = 0
+                }
+            },
+            created:function(){
+                console.log(1243)
+                //this.reverseMessage()
+            }
+        })
+    </script>
+</html>
